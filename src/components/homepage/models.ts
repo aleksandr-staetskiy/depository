@@ -4,3 +4,8 @@ export interface Expense {
   sum: number;
   icon: string;
 }
+
+export interface ICategory {
+  icon: string,
+  name: string,
+}

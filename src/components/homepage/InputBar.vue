@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex pa-6">
+  <div class="d-flex">
     <v-text-field
       label="Enter sum"
       hide-details="auto"
