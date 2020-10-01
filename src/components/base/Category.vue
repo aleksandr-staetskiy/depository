@@ -22,7 +22,7 @@ import { ICategory } from '../homepage/models';
 
 @Component
 export default class Category extends Vue {
-  @Prop(Category) readonly info!: ICategory
+  @Prop(Object) readonly info!: ICategory
 }
 </script>
 

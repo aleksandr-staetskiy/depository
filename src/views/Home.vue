@@ -1,7 +1,12 @@
 <template>
   <div class="pa-6">
-    <InputBar />
-    <FavCategories class="mt-8" />
+    <InputBar @toggle-bar="toggleCategories($event)"/>
+    <v-expand-transition>
+      <FavCategories
+        v-if="isActiveCategories"
+        class="mt-8"
+      />
+    </v-expand-transition>
   </div>
 </template>
 
@@ -17,6 +22,11 @@ import FavCategories from '@/components/homepage/FavCategories.vue';
   },
 })
 export default class Home extends Vue {
+  isActiveCategories = false;
+
+  toggleCategories() {
+    this.isActiveCategories = !this.isActiveCategories;
+  }
 }
 </script>
 

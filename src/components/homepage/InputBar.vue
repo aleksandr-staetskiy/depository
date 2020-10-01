@@ -11,6 +11,7 @@
       fab
       dark
       color="indigo"
+      @click="toggleBar($event)"
     >
       <v-icon dark>
         mdi-plus
@@ -20,8 +21,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Vue, Component, Emit } from 'vue-property-decorator';
 import { Expense } from './models';
 
 @Component
@@ -29,6 +29,12 @@ export default class InputBar extends Vue {
   private inputVal = 0;
 
   private history: Expense | [] = [];
+
+  @Emit()
+  // eslint-disable-next-line class-methods-use-this
+  toggleBar(e: Event): Event {
+    return e;
+  }
 }
 </script>
 
