@@ -1,4 +1,4 @@
-export interface Expense {
+export interface IExpense {
   category: string;
   date: Date;
   sum: number;

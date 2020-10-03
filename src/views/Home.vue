@@ -1,6 +1,9 @@
 <template>
   <div class="pa-6">
-    <InputBar @toggle-bar="toggleCategories($event)"/>
+    <InputBar
+      @toggle-bar="toggleCategories($event)"
+      @on-input="handleInput($event)"
+    />
     <v-expand-transition>
       <FavCategories
         v-if="isActiveCategories"
@@ -14,6 +17,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import InputBar from '@/components/homepage/InputBar.vue';
 import FavCategories from '@/components/homepage/FavCategories.vue';
+import expenses from '@/store/modules/expenses';
 
 @Component({
   components: {
@@ -26,6 +30,10 @@ export default class Home extends Vue {
 
   toggleCategories() {
     this.isActiveCategories = !this.isActiveCategories;
+  }
+
+  handleInput(e) {
+    expenses.setInputValue(e);
   }
 }
 </script>

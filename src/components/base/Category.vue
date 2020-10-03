@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { ICategory } from '../homepage/models';
+import { ICategory } from '@/models';
 
 @Component
 export default class Category extends Vue {

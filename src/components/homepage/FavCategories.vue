@@ -12,7 +12,8 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import Category from '@/components/base/Category.vue';
-import { ICategory } from './models';
+import expenses from '@/store/modules/expenses';
+import { ICategory } from '@/models';
 
 @Component({
   components: {
@@ -20,12 +21,9 @@ import { ICategory } from './models';
   },
 })
 export default class FavCategories extends Vue {
-  categories: ICategory[] = [
-    { icon: 'mdi-coffee', name: 'coffee' },
-    { icon: 'mdi-bus', name: 'transport' },
-    { icon: 'mdi-food', name: 'lunches' },
-    { icon: 'mdi-heart', name: 'wife' },
-  ]
+  get categories(): ICategory[] {
+    return expenses.categories;
+  }
 }
 </script>
 

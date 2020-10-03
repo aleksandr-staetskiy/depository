@@ -5,6 +5,7 @@
       hide-details="auto"
       prefix="$"
       v-model.number="inputVal"
+      @input="onInput"
     />
     <v-btn
       class="mx-2 ml-6"
@@ -22,18 +23,25 @@
 
 <script lang="ts">
 import { Vue, Component, Emit } from 'vue-property-decorator';
-import { Expense } from './models';
 
-@Component
+@Component({
+  filters: {
+    numberWithSpaces(x: number|string) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    },
+  },
+})
 export default class InputBar extends Vue {
-  private inputVal = 0;
-
-  private history: Expense | [] = [];
+  inputVal = 0;
 
   @Emit()
-  // eslint-disable-next-line class-methods-use-this
   toggleBar(e: Event): Event {
     return e;
+  }
+
+  @Emit()
+  onInput(): number {
+    return this.inputVal;
   }
 }
 </script>
