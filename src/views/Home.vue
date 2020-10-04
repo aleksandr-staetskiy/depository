@@ -11,10 +11,10 @@
         @on-save="handleSave()"
       />
     </v-expand-transition>
-    <v-card
+    <div class="mx-auto pt-6">
+          <v-card
     v-if="history.length"
     max-width="600"
-    class="mx-auto"
   >
     <v-toolbar
       color="light-blue"
@@ -34,7 +34,7 @@
       <v-subheader inset>today</v-subheader>
 
       <v-list-item
-        v-for="item in history"
+        v-for="item in history.slice().reverse()"
         :key="item.date"
       >
         <v-list-item-avatar>
@@ -60,6 +60,7 @@
       </v-list-item>
     </v-list>
   </v-card>
+    </div>
      <v-snackbar
       v-model="snackbar"
       :timeout="timeout"
@@ -97,7 +98,7 @@ export default class Home extends Vue {
 
   snackbar = false;
 
-  timeout = 1000;
+  timeout = 2000;
 
   toggleCategories() {
     this.isActiveCategories = !this.isActiveCategories;

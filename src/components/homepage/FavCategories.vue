@@ -38,12 +38,6 @@ import { ICategory } from '@/models';
 export default class FavCategories extends Vue {
   private isOpen = false;
 
-  snackbar = false;
-
-  text = 'My timeout is set to 2000.';
-
-  timeout = 2000
-
   get categories(): ICategory[] {
     return expenses.categories;
   }
@@ -53,13 +47,15 @@ export default class FavCategories extends Vue {
   }
 
   public saveExpense(category: ICategory): void {
-    expenses.addExpense({
-      category: category.name,
-      date: +new Date(),
-      sum: expenses.inputVal,
-      icon: category.icon,
-    });
-    this.$emit('on-save');
+    if (expenses.inputVal > 0) {
+      expenses.addExpense({
+        category: category.name,
+        date: +new Date(),
+        sum: expenses.inputVal,
+        icon: category.icon,
+      });
+      this.$emit('on-save');
+    }
   }
 }
 </script>

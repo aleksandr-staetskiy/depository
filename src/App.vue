@@ -41,7 +41,6 @@ import Component from 'vue-class-component';
 
 @Component
 export default class App extends Vue {
-  public sum = 200
 }
 </script>
 

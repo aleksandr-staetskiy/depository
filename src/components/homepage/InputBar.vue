@@ -4,8 +4,8 @@
       label="Enter sum"
       hide-details="auto"
       prefix="$"
-      v-model.number="inputVal"
-      @input="onInput"
+      :value="value"
+      @input="onInput($event)"
     />
     <v-btn
       class="mx-2 ml-6"
@@ -22,6 +22,7 @@
 </template>
 
 <script lang="ts">
+import expenses from '@/store/modules/expenses';
 import { Vue, Component, Emit } from 'vue-property-decorator';
 
 @Component({
@@ -32,16 +33,17 @@ import { Vue, Component, Emit } from 'vue-property-decorator';
   },
 })
 export default class InputBar extends Vue {
-  inputVal = 0;
+  get value() {
+    return expenses.inputVal;
+  }
 
   @Emit()
   toggleBar(e: Event): Event {
     return e;
   }
 
-  @Emit()
-  onInput(): number {
-    return this.inputVal;
+  onInput(e: number): void {
+    this.$emit('on-input', e);
   }
 }
 </script>
