@@ -8,18 +8,23 @@ import {
 class Expenses extends VuexModule {
   public inputVal = 0;
 
-  public history: IExpense | [] = [];
+  public history: IExpense[] = [];
 
   public categories: ICategory[] = [
     { icon: 'mdi-coffee', name: 'coffee' },
     { icon: 'mdi-bus', name: 'transport' },
     { icon: 'mdi-food', name: 'lunches' },
-    { icon: 'mdi-heart', name: 'wife' },
+    // { icon: 'mdi-heart', name: 'wife' },
   ]
 
   @Mutation
   public setInputValue(val: number): void {
     this.inputVal = val;
+  }
+
+  @Mutation
+  public addNewCategoty(newCategory: ICategory) {
+    this.categories.push(newCategory);
   }
 }
 
