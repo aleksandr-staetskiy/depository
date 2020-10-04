@@ -14,7 +14,7 @@ class Expenses extends VuexModule {
     { icon: 'mdi-coffee', name: 'coffee' },
     { icon: 'mdi-bus', name: 'transport' },
     { icon: 'mdi-food', name: 'lunches' },
-    // { icon: 'mdi-heart', name: 'wife' },
+    { icon: 'mdi-heart', name: 'wife' },
   ]
 
   @Mutation
