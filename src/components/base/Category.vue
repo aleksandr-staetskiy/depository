@@ -1,5 +1,7 @@
 <template>
-<div class="d-flex flex-column align-center">
+<div
+  class="d-flex flex-column align-center"
+  v-on="$listeners">
     <v-btn
       class="mx-2"
       fab

@@ -10,6 +10,9 @@
         class="mt-8"
       />
     </v-expand-transition>
+    <ul v-if="history">
+      <li v-for="(item, index) in history" :key="index">{{ item }}</li>
+    </ul>
   </div>
 </template>
 
@@ -18,6 +21,7 @@ import { Vue, Component } from 'vue-property-decorator';
 import InputBar from '@/components/homepage/InputBar.vue';
 import FavCategories from '@/components/homepage/FavCategories.vue';
 import expenses from '@/store/modules/expenses';
+import { IExpense } from '@/models';
 
 @Component({
   components: {
@@ -32,8 +36,12 @@ export default class Home extends Vue {
     this.isActiveCategories = !this.isActiveCategories;
   }
 
-  handleInput(e) {
+  handleInput(e: number) {
     expenses.setInputValue(e);
+  }
+
+  get history(): IExpense[] {
+    return expenses.history;
   }
 }
 </script>

@@ -1,6 +1,6 @@
 export interface IExpense {
   category: string;
-  date: Date;
+  date: number;
   sum: number;
   icon: string;
 }

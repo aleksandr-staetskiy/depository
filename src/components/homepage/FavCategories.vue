@@ -5,6 +5,7 @@
       v-for="category in categories"
       :key="category.name"
       :info="category"
+      @click="saveExpense(category)"
       />
   </div>
   <v-btn
@@ -43,6 +44,15 @@ export default class FavCategories extends Vue {
 
   private openModal(): void {
     handler.openModal();
+  }
+
+  public saveExpense(category: ICategory): void {
+    expenses.addExpense({
+      category: category.name,
+      date: +new Date(),
+      sum: expenses.inputVal,
+      icon: category.icon,
+    });
   }
 }
 </script>

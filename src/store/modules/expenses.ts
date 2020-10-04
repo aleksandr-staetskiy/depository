@@ -26,6 +26,11 @@ class Expenses extends VuexModule {
   public addNewCategoty(newCategory: ICategory) {
     this.categories.push(newCategory);
   }
+
+  @Mutation
+  public addExpense(expense: IExpense) {
+    this.history.push(expense);
+  }
 }
 
 export default getModule(Expenses);
