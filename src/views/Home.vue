@@ -11,55 +11,11 @@
         @on-save="handleSave()"
       />
     </v-expand-transition>
-    <div class="mx-auto pt-6">
-          <v-card
-    v-if="history.length"
-    max-width="600"
-  >
-    <v-toolbar
-      color="light-blue"
-      dark
+    <div
+      v-if="history.length"
+      class="mx-auto pt-6"
     >
-      <v-toolbar-title>History</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-    </v-toolbar>
-
-    <v-list
-      subheader
-      two-line
-    >
-      <v-subheader inset>today</v-subheader>
-
-      <v-list-item
-        v-for="item in history.slice().reverse()"
-        :key="item.date"
-      >
-        <v-list-item-avatar>
-          <v-icon
-            class="grey lighten-1"
-            dark
-          >
-            {{ item.icon }}
-          </v-icon>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title v-text="item.category"></v-list-item-title>
-
-          <v-list-item-subtitle v-text="item.sum"></v-list-item-subtitle>
-        </v-list-item-content>
-
-        <v-list-item-action>
-          <v-btn icon>
-            <v-icon color="grey lighten-1">mdi-information</v-icon>
-          </v-btn>
-        </v-list-item-action>
-      </v-list-item>
-    </v-list>
-  </v-card>
+      <HistoryList :history="history" />
     </div>
      <v-snackbar
       v-model="snackbar"
@@ -84,6 +40,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import InputBar from '@/components/homepage/InputBar.vue';
 import FavCategories from '@/components/homepage/FavCategories.vue';
+import HistoryList from '@/components/homepage/HistoryList.vue';
 import expenses from '@/store/modules/expenses';
 import { IExpense } from '@/models';
 
@@ -91,6 +48,7 @@ import { IExpense } from '@/models';
   components: {
     InputBar,
     FavCategories,
+    HistoryList,
   },
 })
 export default class Home extends Vue {
